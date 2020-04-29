@@ -102,8 +102,21 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 */
 
 function variableInterestRate (P,I,N) {
-    for (let i = I - .2; i <= (i + .4); i = i + .05) {
-        console.log( name + ', with an interest rate of' + ',your monthly rate is $' + monthlyRate);
+    
+    
+
+    for (let i = I - .02; i < (i + .04); i + .005) {
+        
+        let newI = i;
+        
+        let monthlyInterestRate = newI / 12;
+        let periods = N * 12;
+        let name = 'Brandon';
+        
+        let monthlyRate = P * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate , periods)) / (Math.pow( 1 + monthlyInterestRate, periods) - 1);
+        monthlyRate = Math.round(monthlyRate * 100) / 100;
+        
+        console.log( name + ', with an interest rate of' + i + ',your monthly rate is $' + monthlyRate);
     }
 }
 
