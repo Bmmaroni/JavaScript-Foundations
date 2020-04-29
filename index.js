@@ -39,9 +39,19 @@ let monthlyRate = P * (I * Math.pow(1 + I , N)) / (Math.pow( 1 + I, N) - 1);
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
 
-function mortgageCalculator (P,I,N) {
+function mortgageCalculator (P,I,N,creditScore) {
     
-    let monthlyInterestRate = I / 12;
+    let newI = I;
+
+    if (creditScore > 740) {
+        newI = I - .005;
+    }else if (creditScore < 660) {
+        newI = I + .005;
+    }else {
+        newI = I;
+    }
+
+    let monthlyInterestRate = newI / 12;
     let periods = N * 12;
     let name = 'Brandon'
     
@@ -91,7 +101,11 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
-
+function variableInterestRate (P,I,N) {
+    for (let i = I - .2; i <= (i + .4); i = i + .05) {
+        console.log( name + ', with an interest rate of' + ',your monthly rate is $' + monthlyRate);
+    }
+}
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
